@@ -66,15 +66,12 @@ app.use(async (ctx, next) => {
 
 ## 中间件
 
-### koa-onerror
-捕获由下游中间件抛出的错误，并通过发送适当的错误响应来处理它们
-```javascript
-const onerror = require('koa-onerror')
-onerror(app)
-```
-
 ### koa-bodyparser
 解析请求体并将其存储在ctx.request.body属性中
+```javascript
+pnpm i koa-bodyparser
+```
+
 ```javascript
 const onerror = require('koa-bodyparser')
 onerror(app)
@@ -82,6 +79,10 @@ onerror(app)
 
 ### koa-json-error
 将响应体转换为JSON格式，并设置适当的Content-Type头
+```javascript
+pnpm i koa-json-error
+```
+
 ```javascript
 const onerror = require('koa-json-error')
 app.use(onerror({
@@ -94,6 +95,10 @@ app.use(onerror({
 
 ### log4js
 日志记录
+```javascript
+pnpm i log4js
+```
+
 ```javascript
 const log4js = require('log4js');
 log4js.configure({
@@ -153,7 +158,11 @@ module.exports = {
 ```
 
 ### better-sqlite3
-数据库 https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md
+一个轻量级数据库，无需安装额外服务 https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md
+```javascript
+pnpm i better-sqlite3
+```
+
 ```javascript
 const Database = require('better-sqlite3');
 app.use(async (ctx, next) => {
@@ -165,6 +174,9 @@ app.use(async (ctx, next) => {
 ### jsonwebtoken
 鉴权 https://www.npmjs.com/package/jsonwebtoken  
 我把用户名存入了token并放入cookie中，后续客户端请求设置携带cookie请求，既能鉴权也可直接获取用户信息
+```javascript
+pnpm i jsonwebtoken
+```
 
 封装jwt验证中间件
 ```javascript
