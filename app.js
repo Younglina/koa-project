@@ -8,7 +8,7 @@ const Database = require('better-sqlite3')
 const logger = require('./middlewares/log4js')
 
 const index = require('./routes/index')
-const users = require('./routes/users')
+const users = require('./routes/user')
 
 // 配置跨域
 app.use(async (ctx, next) => {

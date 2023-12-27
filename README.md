@@ -169,6 +169,26 @@ app.use(async (ctx, next) => {
   ctx.database = new Database('./database/data.db', { verbose: console.log }); // 将db挂在ctx上下文对象的database属性上
   await next();
 });
+
+// routes/user.js
+router.get('/', jwtMiddleware, async (ctx) => {
+  const { getUser } = require('../model/user')
+  const result = await getUser(ctx.database)
+  ctx.body = { data: result }
+})
+
+// model/user.js 得先创建用户表
+async function addUser(db, data) {
+  const stmt = db.prepare('INSERT INTO users (name, password, create_time) VALUES (?, ?, ?)')
+  const info = stmt.run(data.name, data.password, new Date().toLocaleString())
+  return info
+}
+
+async function getUser(db) {
+  const stmt = db.prepare('select * from users')
+  const data = stmt.all()
+  return data
+}
 ```
 
 ### jsonwebtoken

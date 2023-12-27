@@ -7,7 +7,7 @@ const router = require('koa-router')()
 const jwt = require('jsonwebtoken')
 const jwtMiddleware = require('../middlewares/jwt');
 
-router.prefix('/users')
+router.prefix('/user')
 
 router.get('/', jwtMiddleware, async (ctx) => {
   const { getUser } = require('../model/user')
